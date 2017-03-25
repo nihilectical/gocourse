@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"sort"
 )
 
 //Shape definitions
@@ -50,6 +51,19 @@ type cubes []*cube
 type spheres []*sphere
 type rectPrisms []*rectPrism
 type triPrisms []*triPrism
+
+//Additional methods to implement sort on spheres
+func (d spheres) Len() int {
+	return len(d)
+}
+
+func (d spheres) Swap(i, j int) {
+	d[i], d[j] = d[j], d[i]
+}
+
+func (d spheres) Less(i, j int) bool {
+	return d[i].radius < d[j].radius //Sort by radius
+}
 
 //Shape definitions for 2D and 3D
 
@@ -205,6 +219,11 @@ func main() {
 		0: {9},
 		1: {11},
 		2: {21},
+		3: {30},
+		4: {55},
+		5: {92},
+		6: {450},
+		7: {1140},
 	}
 
 	rpm := map[int]*rectPrism{
@@ -266,6 +285,8 @@ func main() {
 	for _, d := range tpm {
 		tp = append(tp, d)
 	}
+
+	sort.Sort(sp)
 
 	//Print data
 
