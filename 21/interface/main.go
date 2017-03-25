@@ -239,6 +239,13 @@ func main() {
 		7: {1140},
 	}
 
+	/*
+		Data generated with Powershell
+			PS> 1..1000 | % { $a= Get-Random -Maximum 1000 -Minimum 1;
+			$b= Get-Random -Maximum 1000 -Minimum 1;
+			$c= Get-Random -Maximum 1000 -Minimum 1;
+			Write-Host "$_" -nonewline; Write-Host ": {$a, $b, $c},"}
+	*/
 	rpm := map[int]*rectPrism{
 		1:    {416, 949, 414},
 		2:    {941, 814, 339},
